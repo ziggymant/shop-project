@@ -30,11 +30,10 @@ elixir(mix => {
        	], './public/css/libs.css')
 
        .scripts([
-       		'app.js',
-       		'bootstrap.js',
-       		'bootstrap.min.js',
        		'jquery.js',
+       		'bootstrap.js',
        		'metisMenu.js',
-       		'sb-admin-2.js'
+       		'sb-admin-2.js',
+                     'app.js'
        	], './public/js/libs.js');
 });
