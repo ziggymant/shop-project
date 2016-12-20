@@ -6,7 +6,7 @@
 
 
 
-{!!Form::open(['method'=>'POSTS', 'action'=>'AdminUsersController@store'])!!}
+{!!Form::open(['method'=>'POSTS', 'action'=>'AdminUsersController@store', 'files'=>true])!!}
 
 	<div class="form-group">
 		{!!Form::label('name', 'Name')!!}
@@ -28,6 +28,10 @@
 		{!!Form::label('password', 'Password')!!}
 		{!!Form::password('password', ['class'=>'form-control'])!!}
 	</div>
+{{-- 	<div class="form-group">
+		{!!Form::label('photo_id', 'Photo')!!}
+		{!!Form::file('photo_id', null, ['class'=>'form-control'])!!}
+	</div> --}}
 
 	<div class="form-group">
 		{!!Form::submit('Create user', ['class'=>'btn btn-primary'])!!}
