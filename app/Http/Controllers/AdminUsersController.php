@@ -43,6 +43,7 @@ class AdminUsersController extends Controller
         
         if($file = $request->file('photo_id')){
             $name = time().$file->getClientOriginalName();
+            $name = str_replace(' ', '_', $name);
             $file->move('images', $name);
             $photo = Photo::create(['path'=>$name]);
             $input['photo_id'] = $photo->id;
@@ -76,7 +77,9 @@ class AdminUsersController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.users.edit');
+        $user = User::findOrFail($id);
+        $roles = Role::pluck('name','id')->all();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
