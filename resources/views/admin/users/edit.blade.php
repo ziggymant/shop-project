@@ -5,13 +5,22 @@
 <h1>Edit user</h1>
 
 <div class="col-sm-3">
-	
+
 	<img height="150" src="{{$user->photo ? $user->photo->path : "/images/default.jpg"}}" class="img-resposnive img-rounded">
-		
+
 </div>
 
 <div class="col-sm-9">
-	
+
+@if(count($errors)>0)
+	<div class="alert alert-danger">
+		<ul>
+			@foreach ($errors->all() as $error)
+				<li>{{$error}}</li>
+			@endforeach
+		</ul>
+	</div>
+@endif
 
 	{!!Form::model($user, ['method'=>'PATCH', 'action'=>['AdminUsersController@update', $user->id], 'files'=>true])!!}
 
@@ -41,7 +50,7 @@
 		</div>
 
 		<div class="form-group">
-			{!!Form::submit('Create user', ['class'=>'btn btn-primary'])!!}
+			{!!Form::submit('Edit user', ['class'=>'btn btn-primary'])!!}
 		</div>
 
 	{!!Form::close()!!}
