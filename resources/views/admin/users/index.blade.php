@@ -23,11 +23,7 @@
       @foreach($users as $user)
         <tr>
           <td>{{$user->id}}</td>
-          <td>@if($user->photo)
-              <img height="50" src="{{$user->photo->path}}"/>
-              @else {{'No user photo'}}
-              @endif
-          </td>
+          <td><img height="50" src="{{$user->photo ? $user->photo->path : "/images/default.jpg"}}"</td>
           <td><a href="/admin/users/{{$user->id}}/edit">{{$user->name}}</a></td> 
           <td>{{$user->email}}</td>
           <td>{{$user->role->name }}</td>
