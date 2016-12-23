@@ -47,6 +47,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
+
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
@@ -70,6 +71,11 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    @if (Auth::user()->isAdmin())
+                                      <li>
+                                          <a href="admin">Admin page</a>
+                                      </li>
+                                    @endif
                                 </ul>
                             </li>
                         @endif
