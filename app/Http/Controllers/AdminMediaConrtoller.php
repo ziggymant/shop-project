@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Photo;
+use Illuminate\Support\Facades\Session;
 
 class AdminMediaConrtoller extends Controller
 {
@@ -32,6 +33,7 @@ class AdminMediaConrtoller extends Controller
       $file = Photo::findOrFail($id);
       unlink(public_path() . $file->path);
       $file->delete();
+      Session::flash('message', 'File ' .$file->path. ' has been deleted');
       return redirect('/admin/media');
 
     }

@@ -5,6 +5,10 @@
 @section('content')
   <h1>Media</h1>
 
+  @if(Session::has('message'))
+    <p class="text-success">{{Session('message')}}</p>
+  @endif
+
   <table class="table">
   <thead>
     <tr>
