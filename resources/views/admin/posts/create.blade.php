@@ -6,7 +6,7 @@
 
 @include('includes.errors')
 
-{!!Form::open(['method'=>'POSTS', 'action'=>'AdminPostsController@store', 'files'=>true])!!}
+{!!Form::open(['method'=>'POST', 'action'=>'AdminPostsController@store', 'files'=>true])!!}
 
   <div class="form-group">
   {!!Form::label('title', 'Title')!!}
