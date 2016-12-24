@@ -4,31 +4,28 @@
 
   <h1>Comments</h1>
 
-  @if (Session::has('message'))
-    <p class="text-success">{{Session('message')}}</p>
-  @endif
-  
+@if(count($comments)> 0)
   <table class="table">
   <thead>
     <tr>
-      <th>Id</th>
+      <th>Comment id</th>
+      <th>Post id</th>
       <th>Author</th>
-      <th>Body</th>
-      <th>Created at</th>
-      <th>Post</th>
-      <th>Active</th>
+      <th>Comment</th>
+      <th>Created</th>
+      <th>Status</th>
       <th>Delete</th>
     </tr>
   </thead>
-@if(count($comments)> 0)
   <tbody>
-    @foreach($comments as $comment)
+
+    @foreach ($comments as $comment)
     <tr>
       <td>{{$comment->id}}</td>
+      <td>{{$comment->post_id}}</td>
       <td>{{$comment->author}}</td>
       <td>{{$comment->body}}</td>
       <td>{{$comment->created_at}}</td>
-      <td><a href="{{route('home.post', $comment->post_id)}}">View post: {{$comment->post->title}}</a></td>
       <td>
         @if($comment->is_active == 1)
 
@@ -56,9 +53,12 @@
 
       </td>
     </tr>
-  @endforeach
+    @endforeach
+
   </tbody>
-@endif
-</table>
+  </table>
+  @else
+    <h3 class="text-center">No comments</h3>
+  @endif
 
 @endsection

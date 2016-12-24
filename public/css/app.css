@@ -1934,6 +1934,7 @@ pre code {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  margin-top: 40px;
 }
 
 .container:before, .container:after {
@@ -7693,7 +7694,7 @@ button.close {
 }
 
 .container {
-  padding-top: 30px;
+  margin-top: 40px;
 }
 
 /*# sourceMappingURL=app.css.map */
