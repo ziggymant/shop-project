@@ -17,4 +17,10 @@ class CommentReply extends Model
   public function comment(){
     return $this->belongsTo('App\Comment');
   }
+
+  public function authorPhoto($name){
+    $user = User::where('name', $name)->get()->first();
+    $path = $user->photo->path;
+    return $path;
+  }
 }

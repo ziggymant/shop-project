@@ -1,4 +1,21 @@
 
+
+#admin-page {
+	padding-top: 0px;
+}
+
+.comment-reply {
+	display: none;
+}
+
+.row {
+	margin-top: 40px;
+}
+#nested-comment{
+	margin-top: 20px;
+}
+
+
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
@@ -7,13 +24,3 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
-
-#admin-page {
-
-	padding-top: 0px;
-}
-
-.container {
-	margin-top: 40px;
-}

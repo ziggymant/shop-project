@@ -1,5 +1,21 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+#admin-page {
+  padding-top: 0px;
+}
+
+.comment-reply {
+  display: none;
+}
+
+.row {
+  margin-top: 40px;
+}
+
+#nested-comment {
+  margin-top: 20px;
+}
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -1934,7 +1950,6 @@ pre code {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
-  margin-top: 40px;
 }
 
 .container:before, .container:after {
@@ -7687,14 +7702,6 @@ button.close {
   .hidden-print {
     display: none !important;
   }
-}
-
-#admin-page {
-  padding-top: 0px;
-}
-
-.container {
-  margin-top: 40px;
 }
 
 /*# sourceMappingURL=app.css.map */

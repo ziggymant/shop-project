@@ -7,7 +7,7 @@
   @if (Session::has('message'))
     <p class="text-success">{{Session('message')}}</p>
   @endif
-  
+
   <table class="table">
   <thead>
     <tr>
@@ -16,6 +16,7 @@
       <th>Body</th>
       <th>Created at</th>
       <th>Post</th>
+      <th>Replies</th>
       <th>Active</th>
       <th>Delete</th>
     </tr>
@@ -29,6 +30,7 @@
       <td>{{$comment->body}}</td>
       <td>{{$comment->created_at}}</td>
       <td><a href="{{route('home.post', $comment->post_id)}}">View post: {{$comment->post->title}}</a></td>
+      <td><a href="{{route('replies.show', $comment->id)}}">View replies</a></td>
       <td>
         @if($comment->is_active == 1)
 
