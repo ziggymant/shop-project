@@ -8,6 +8,10 @@
   display: none;
 }
 
+#app {
+  margin-top: 40px;
+}
+
 .row {
   margin-top: 40px;
 }

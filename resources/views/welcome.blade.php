@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+@extends('layouts.blog-home')
+
+@section('content')
+
+  @foreach($posts as $post)
+  <h2>
+      <a href="#">{{$post->title}}</a>
+  </h2>
+  <p class="lead">
+      by <a href="index.php">{{$post->user->name}}</a>
+  </p>
+  <p><span class="glyphicon glyphicon-time"></span> Posted on {{$post->created_at}}</p>
+  <hr>
+  <img height="300" class="img-responsive" src="{{$post->photo->path}}" alt="">
+  <hr>
+  <p>{{str_limit($post->body, 300)}}</p>
+  <a class="btn btn-primary" href="{{route('home.post', $post->slug)}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+  <hr>
+  @endforeach
+
+@endsection
+
+{{-- <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -88,4 +111,4 @@
             </div>
         </div>
     </body>
-</html>
+</html> --}}
