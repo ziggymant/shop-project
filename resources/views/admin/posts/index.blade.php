@@ -23,7 +23,6 @@
 @if($posts)
   @foreach ($posts as $post)
   <tr>
-
     <td>{{$post->id}}</td>
     <td><img height="50" src="{{$post->photo ? $post->photo->path : "images/default.jpg"}}" alt=""></td>
     <td>{{$post->user->name}}</td>

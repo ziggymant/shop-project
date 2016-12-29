@@ -50,7 +50,7 @@
                         <a href="#">About</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="{{url('/shop/products')}}">Store</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
@@ -90,6 +90,15 @@
                         </li>
                     @endif
                   </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                      @if(!Auth::user())
+                          <li><a href="/auth/login">Login</a></li>
+                          <li><a href="/auth/register">Signup</a></li>
+                      @else
+                          <li><a href="/order">My Order <span class="fa fa-briefcase"></span></a></li>
+                          <li><a href="{{url('shop/cart')}}">Cart <span class="fa fa-shopping-cart"></span></a></li>
+                      @endif
+                  </ul>
 
 
 
@@ -99,43 +108,17 @@
         <!-- /.container -->
     </nav>
 
-    <!-- Page Content -->
-    <div class="container">
-
-        <div class="row">
-
-            <!-- Blog Entries Column -->
-            <div class="col-md-12">
-
-
-
 @yield('content')
 
 
 
-
-            </div>
-
-
-
-        </div>
-        <!-- /.row -->
-
         <hr>
 
-        {{-- <!-- Footer -->
+        <!-- Footer -->
         <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-        </footer> --}}
 
-    </div>
-    <!-- /.container -->
+        </footer>
+
 
     <!-- jQuery -->
     <script src="{{asset('js/libs.js')}}"></script>

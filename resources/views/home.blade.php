@@ -17,7 +17,7 @@
 <!-- First Blog Post -->
     @foreach($posts as $post)
     <h2>
-        <a href="#">{{$post->title}}</a>
+        <a href="{{route('home.post', $post->slug)}}">{{$post->title}}</a>
     </h2>
     <p class="lead">
         by <a href="index.php">{{$post->user->name}}</a>

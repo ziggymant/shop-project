@@ -22,8 +22,8 @@ class Admin
           return $next($request);
         }
       }
-      // return redirect(404);
-      Return Redirect::back();
+      return redirect(404);
+      // Return Redirect::back();
 
     }
 }

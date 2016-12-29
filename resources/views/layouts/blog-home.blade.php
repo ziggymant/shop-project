@@ -41,7 +41,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="{{url('/')}}">Home</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -50,7 +50,7 @@
                         <a href="#">About</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="{{url('/shop')}}">Store</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
@@ -83,7 +83,7 @@
                                 </li>
                                 @if (Auth::user()->isAdmin())
                                   <li>
-                                      <a href="admin">Admin page</a>
+                                      <a href="{{url('/admin')}}">Admin page</a>
                                   </li>
                                 @endif
                             </ul>
@@ -144,33 +144,28 @@
                     <!-- /.input-group -->
                 </div>
 
+
                 <!-- Blog Categories Well -->
                 <div class="well">
                     <h4>Blog Categories</h4>
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
+                              @if($categories1)
+                                @foreach($categories1 as $category)
+                                  <li><a href="#">{{$category->name}}</a></li>
+                                @endforeach
+                              @endif
                             </ul>
                         </div>
                         <!-- /.col-lg-6 -->
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
+                              @if($categories2)
+                                @foreach($categories2 as $category)
+                                  <li><a href="#">{{$category->name}}</a></li>
+                                @endforeach
+                              @endif
                             </ul>
                         </div>
                         <!-- /.col-lg-6 -->
