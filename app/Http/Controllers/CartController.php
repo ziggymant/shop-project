@@ -24,7 +24,7 @@ class CartController extends Controller
       $cartItem->cart_id= $cart->id;
       $cartItem->save();
 
-      return redirect('/cart');
+      return redirect()->back();
 
   }
 
@@ -49,6 +49,6 @@ class CartController extends Controller
     public function removeItem($id){
 
         CartItem::destroy($id);
-        return redirect('/cart');
+        return redirect('/shop/cart');
     }
 }

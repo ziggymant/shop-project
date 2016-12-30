@@ -8,6 +8,10 @@
 
 @section('content')
 
+  <div height="100px" class="row">
+
+  </div>
+
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <table class="table table-hover">
@@ -25,7 +29,7 @@
                     <tr>
                         <td class="col-sm-8 col-md-6">
                             <div class="media">
-                                <a class="thumbnail pull-left" href="#"> <img class="media-object" src="{{$item->product->imageurl}}" style="width: 100px; height: 72px;"> </a>
+                                <a class="thumbnail pull-left" href="#"> <img class="media-object" src="/images/{{$item->product->imageurl}}" style="width: 100px; height: 72px;"> </a>
                                 <div class="media-body">
                                     <h4 class="media-heading"><a href="#">{{$item->product->name}}</a></h4>
                                 </div>
@@ -35,7 +39,7 @@
                         <td class="col-sm-1 col-md-1 text-center"></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>${{$item->product->price}}</strong></td>
                         <td class="col-sm-1 col-md-1">
-                            <a href="/removeItem/{{$item->id}}"> <button type="button" class="btn btn-danger">
+                            <a href="/shop/removeItem/{{$item->id}}"> <button type="button" class="btn btn-danger">
                                     <span class="fa fa-remove"></span> Remove
                                 </button>
                             </a>
@@ -55,14 +59,24 @@
                     <td>   </td>
                     <td>   </td>
                     <td>
-                        <a href="/"> <button type="button" class="btn btn-default">
+                        <a href="{{url('/shop')}}"> <button type="button" class="btn btn-default">
                                 <span class="fa fa-shopping-cart"></span> Continue Shopping
                             </button>
                         </a></td>
-                    <td>
-                        <button type="button" class="btn btn-success">
-                            Checkout <span class="fa fa-play"></span>
-                        </button></td>
+                        <td class="col-md-2">
+                          <form action="/checkout" method="POST">
+                              {!! csrf_field() !!}
+                              <script
+                                      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                      data-key="pk_test_h86ts3Ue00B2EhVxP9d7waSQ"
+                                      data-amount="{{$total*100}}"
+                                      data-name="Blog Test"
+                                      data-description="Products"
+                                      data-image="/images/128x128.png"
+                                      data-locale="auto">
+                              </script>
+                          </form>
+                      </td>
                 </tr>
                 </tbody>
             </table>

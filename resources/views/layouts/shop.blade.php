@@ -50,7 +50,7 @@
                         <a href="#">About</a>
                     </li>
                     <li>
-                        <a href="{{url('/shop/products')}}">Store</a>
+                        <a href="{{url('/shop')}}">Store</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
@@ -95,8 +95,8 @@
                           <li><a href="/auth/login">Login</a></li>
                           <li><a href="/auth/register">Signup</a></li>
                       @else
-                          <li><a href="/order">My Order <span class="fa fa-briefcase"></span></a></li>
-                          <li><a href="{{url('shop/cart')}}">Cart <span class="fa fa-shopping-cart"></span></a></li>
+                          <li><a href="{{url('/shop/orders')}}">My Orders <span class="fa fa-briefcase"></span></a></li>
+                          <li><a href="{{url('shop/cart')}}">Cart {{$items ? "(".count($items). ")" : ""}} <span class="fa fa-shopping-cart"></span></a></li>
                       @endif
                   </ul>
 
@@ -108,7 +108,13 @@
         <!-- /.container -->
     </nav>
 
-@yield('content')
+    <div class="container">
+
+      @yield('content')
+
+    </div>
+
+
 
 
 

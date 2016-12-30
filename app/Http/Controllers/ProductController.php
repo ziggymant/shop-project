@@ -28,29 +28,36 @@ class ProductController extends Controller
 
    public function add(Request $request) {
 
-      $input = $request->all();
-        if($file = $request->file('imageurl')){
-          $name = "shop_".time(). $file->getClientOriginalName();
-          $name = str_replace(" ", "_", $name);
-          $file->move('images', $name);
-          $photo = Photo::create(['path'=>'name']);
-          $input['imageurl'] = $name;
-          $input['file_id'] = $photo->id;
-        }
+        $input = $request->all();
 
-         if($file) {
-         $extension = $file->getClientOriginalExtension();
-         $entry = new \App\File();
-         $entry->mime = $file->getClientMimeType();
-         $entry->original_filename = $file->getClientOriginalName();
-         $entry->filename = $name;
-         $entry->save();
-         } else {
-           $entry = false;
-         }
+        $image = $request->file('image');
+        $img_name = "shop_".time(). $image->getClientOriginalName();
+        $img_name = str_replace(" ", "_", $img_name);
+        $image->move('images', $img_name);
+        Photo::create(['path'=>$img_name]);
 
-         Product::create($input);
-         return redirect('/admin/shop/products');
+        $file = $request->file('file');
+        $file_name = "storage_".$file->getClientOriginalName();
+        $file_name = str_replace(" ", "_", $file_name);
+        // $file->move('products', $file_name);
+
+        $extension = $file->getClientOriginalExtension();
+        Storage::disk('local')->put($file_name,  File::get($file));
+
+        $entry = new \App\File();
+        // $entry-> = $file->getClientOriginalExtension();
+        $entry->mime = $file->getClientMimeType();
+        $entry->filename = $file_name;
+        $entry->original_filename = $file->getClientOriginalName();
+        $entry->save();
+
+        $input['imageurl'] = $img_name;
+        $input['file_id'] = $entry->id;
+
+        $product = Product::create($input);
+        $entry->update(['product_id'=>$product->id]);
+
+        return redirect('/admin/shop/products');
 
    }
 

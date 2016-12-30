@@ -15,7 +15,7 @@
 
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
-
+    @yield('styles')
     @yield('head')
 
     <!-- Custom CSS -->
@@ -175,7 +175,7 @@
 
 
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Products<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-shopping-cart fa-fw"></i> Products<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{url('admin/shop/products')}}">Products</a>

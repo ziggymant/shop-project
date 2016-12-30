@@ -26,7 +26,7 @@
                             <th>Name</th>
                             <th>Price</th>
                             <th>File</th>
-                            <th>Delete</th>
+                            <th>Description</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -34,7 +34,7 @@
                             <tr>
                                 <td>{{$product->name}}</td>
                                 <td>{{$product->price}}$</td>
-                                <td>Placehold</td>
+                                <td>{{$product->description}}</td>
                                 <td><a href="/shop/product/destroy/{{$product->id}}"><button class="btn btn-danger">Delete</button></a> </td>
                             </tr>
                         @endforeach

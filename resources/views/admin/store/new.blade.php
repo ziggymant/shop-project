@@ -40,9 +40,16 @@
                     </div>
 
                     <div class="form-group">
-                      {!!Form::label('imageurl', 'Image', ['class'=>'col-md-3 control-label'])!!}
+                      {!!Form::label('image', 'Image', ['class'=>'col-md-3 control-label'])!!}
                         <div class="col-md-9">
-                          {!!Form::file('imageurl', null, ['id'=>'imageurl','class'=>'form-control input-md'])!!}
+                          {!!Form::file('image', null, ['id'=>'imageurl','class'=>'form-control input-md'])!!}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      {!!Form::label('file', 'Digital Product', ['class'=>'col-md-3 control-label'])!!}
+                        <div class="col-md-9">
+                          {!!Form::file('file', null, ['class'=>'form-control input-md'])!!}
                         </div>
                     </div>
 

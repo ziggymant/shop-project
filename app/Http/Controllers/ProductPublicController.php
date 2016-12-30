@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Product;
+use App\Cart;
 
 class ProductPublicController extends Controller
 {
@@ -14,8 +16,10 @@ class ProductPublicController extends Controller
      */
     public function index()
     {
+      $cart = Cart::where('user_id',Auth::user()->id)->first();
+      $items = $cart->cartItems;
       $products = Product::all();
-      return view('shop.index',compact('products'));
+      return view('shop.index',compact('products','items'));
     }
 
     /**

@@ -50,6 +50,15 @@ Route::group(['middleware'=>'admin'], function(){
 Route::group(['middleware'=>'auth'], function(){
   Route::get('/shop','ProductPublicController@index');
   Route::get('/shop/cart', 'CartController@showCart');
+  Route::get('/shop/addProduct/{productId}', 'CartController@addItem');
+  Route::get('/shop/removeItem/{productId}', 'CartController@removeItem');
+
+  Route::post('/checkout', 'OrderController@checkout');
+
+  Route::get('order/{orderId}', 'OrderController@viewOrder');
+  Route::get('order', 'OrderController@index');
+  Route::get('download/{orderId}/{filename}', 'OrderController@download');
+  Route::get('shop/orders','OrderController@allOrders' );
 
 });
 
