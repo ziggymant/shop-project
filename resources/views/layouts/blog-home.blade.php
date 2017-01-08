@@ -53,7 +53,7 @@
                         <a href="{{url('/shop')}}">Store</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="{{url('/categories')}}">Categories</a>
                     </li>
                   </ul>
 
@@ -133,15 +133,22 @@
                 <!-- Blog Search Well -->
                 <div class="well">
                     <h4>Blog Search</h4>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        </span>
-                    </div>
+                    {!!Form::open()!!}
+                      <div class="input-group">
+                          <input id="search" type="text" class="form-control">
+                          <span class="input-group-btn">
+                              <button class="btn btn-default" type="button">
+                                  <span class="glyphicon glyphicon-search"></span>
+                          </button>
+                          </span>
+                      </div>
+                    {!!Form::close()!!}
                     <!-- /.input-group -->
+                    <div  class="search-result list-group">
+                      <ul id="search-suggest">
+                        {{-- ajax input goes here --}}
+                      </ul>
+                    </div>
                 </div>
 
 
@@ -202,6 +209,9 @@
 
     <!-- jQuery -->
     <script src="{{asset('js/libs.js')}}"></script>
+    <script type="text/javascript" src="{{url("js/livesearch.js")}}"></script>
+
+    @yield('scripts')
 
 </body>
 

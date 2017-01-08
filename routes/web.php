@@ -24,6 +24,9 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
 
+Route::get('/search/{q}', 'Controller@search');
+Route::get('/productsearch/{q}', 'ProductPublicController@search');
+
 
 
 
@@ -49,8 +52,13 @@ Route::group(['middleware'=>'admin'], function(){
 
 Route::group(['middleware'=>'auth'], function(){
   Route::get('/shop','ProductPublicController@index');
+  Route::get('/categories','ProductPublicController@categories');
+  Route::get('/item/{id}','ProductPublicController@item');
+  Route::post('/review','ProductPublicController@StoreReview');
   Route::get('/shop/cart', 'CartController@showCart');
   Route::get('/shop/addProduct/{productId}', 'CartController@addItem');
+  Route::get('/shop/edit/{productId}', 'ProductController@edit');
+  Route::patch('/shop/update/{productId}', 'ProductController@update');
   Route::get('/shop/removeItem/{productId}', 'CartController@removeItem');
 
   Route::post('/checkout', 'OrderController@checkout');

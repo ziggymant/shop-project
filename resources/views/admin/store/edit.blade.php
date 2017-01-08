@@ -10,11 +10,11 @@
 
     <div class="panel panel-info">
         <div class="panel-heading">
-            <div class="panel-title">New Product</div>
+            <div class="panel-title">Edit Product</div>
         </div>
         <div class="panel-body" >
 
-              {!!Form::open(['method'=>'POST', 'action'=>'ProductController@add', 'files'=>true])!!}
+              {!!Form::model($product,['method'=>'PATCH', 'action'=>['ProductController@update', $product->id ], 'files'=>true])!!}
 
                     <!-- Text input-->
                     <div class="form-group">
@@ -41,7 +41,7 @@
                     <div class="form-group">
                   		{!!Form::label('category_id', 'Category',  ['class'=>'col-md-3 control-label'])!!}
                       <div class="col-md-9">
-                  		    {!!Form::select('category_id',$categories  , null, ['class'=>'form-control input-md'])!!}
+                  		    {!!Form::select('category_id', $categories  , null, ['class'=>'form-control input-md'])!!}
                       </div>
                   	</div>
 

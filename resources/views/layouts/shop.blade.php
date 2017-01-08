@@ -15,6 +15,8 @@
 
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    @yield('styles')
+
 
     <!-- Custom CSS -->
     {{-- <link href="css/blog-home.css" rel="stylesheet"> --}}
@@ -53,7 +55,7 @@
                         <a href="{{url('/shop')}}">Store</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="{{url('/categories')}}">Categories</a>
                     </li>
                   </ul>
 
@@ -128,6 +130,8 @@
 
     <!-- jQuery -->
     <script src="{{asset('js/libs.js')}}"></script>
+    <script src="{{url("js/productsearch.js")}}"></script>
+    @yield('scripts')
 
 </body>
 

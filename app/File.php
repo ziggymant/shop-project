@@ -9,6 +9,7 @@ class File extends Model
   protected $fillable = [
     'filename',
     'original_filename',
-    'mime'
+    'mime',
+    'product_id'
   ];
 }

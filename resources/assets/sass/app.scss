@@ -4,6 +4,24 @@
 	padding-top: 0px;
 }
 
+
+.search-result ul li {
+	list-style-type: none;
+}
+
+.search-result ul {
+	padding:0;
+}
+
+.search-result{
+	position: absolute;
+	z-index: 100;
+}
+
+#search-suggest {
+	background-color: #fff;
+}
+
 .comment-reply {
 	display: none;
 }

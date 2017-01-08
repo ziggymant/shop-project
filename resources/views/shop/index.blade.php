@@ -33,7 +33,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-md-offset-3">
                                       {!!Form::open(['method'=>'GET', 'action'=>['CartController@addItem',$product->id ]])!!}
-                                          {!!Form::button('<span class="fa fa-shopping-cart"> Add to cart</span>', ['class'=>'btn btn-success btn-product', 'type'=>'submit'])!!}
+                                          {!!Form::button('<span class="fa fa-shopping-cart"> Add to cart</span>', ['id'=>'', 'class'=>'btn btn-success btn-product', 'type'=>'submit'])!!}
                                       {!!Form::close()!!}
                                     </div>
                                 </div>
