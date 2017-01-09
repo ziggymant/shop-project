@@ -99,13 +99,14 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img class="slide-image" src="/photos/1_800x300.jpg" alt="">
+                                <img class="slide-image" src="/photos/shop1-800x300.jpg" alt="">
+                                
                             </div>
                             <div class="item">
-                                <img class="slide-image" src="/photos/2_800x300.jpg" alt="">
+                                <img class="slide-image" src="/photos/shop2-800x300.jpg" alt="">
                             </div>
                             <div class="item">
-                                <img class="slide-image" src="/photos/3_800x300.jpg" alt="">
+                                <img class="slide-image" src="/photos/shop3-800x300.jpg" alt="">
                             </div>
                         </div>
                         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">

@@ -11,23 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    $categories1 = App\Category::take(4)->get();
-    $categories2 = App\Category::skip(4)->take(4)->get();
-    $posts = App\Post::orderBy('created_at','desc')->paginate(5);
-    return view('welcome', compact('posts', 'categories1', 'categories2'));
-});
+// Route::get('/', function () {
+//     $categories1 = App\Category::take(4)->get();
+//     $categories2 = App\Category::skip(4)->take(4)->get();
+//     $posts = App\Post::orderBy('created_at','desc')->paginate(5);
+//     return view('welcome', compact('posts', 'categories1', 'categories2'));
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/','ProductPublicController@index');
+Route::get('/home', 'ProductPublicController@home');
+Route::get('/item/{id}','ProductPublicController@item');
+Route::get('/blog', 'PublicBlogController@index');
+
+
 
 Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
 
 Route::get('/search/{q}', 'Controller@search');
 Route::get('/productsearch/{q}', 'ProductPublicController@search');
-
-
 
 
 Route::group(['middleware'=>'admin'], function(){
@@ -51,9 +54,7 @@ Route::group(['middleware'=>'admin'], function(){
 });
 
 Route::group(['middleware'=>'auth'], function(){
-  Route::get('/shop','ProductPublicController@index');
-  Route::get('/categories','ProductPublicController@categories');
-  Route::get('/item/{id}','ProductPublicController@item');
+  Route::get('/shop','ProductPublicController@home');
   Route::post('/review','ProductPublicController@StoreReview');
   Route::get('/shop/cart', 'CartController@showCart');
   Route::get('/shop/addProduct/{productId}', 'CartController@addItem');
@@ -62,7 +63,6 @@ Route::group(['middleware'=>'auth'], function(){
   Route::get('/shop/removeItem/{productId}', 'CartController@removeItem');
 
   Route::post('/checkout', 'OrderController@checkout');
-
   Route::get('order/{orderId}', 'OrderController@viewOrder');
   Route::get('order', 'OrderController@index');
   Route::get('download/{orderId}/{filename}', 'OrderController@download');

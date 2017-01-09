@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Cart;
 use App\Review;
+use App\Category;
 
 class ProductPublicController extends Controller
 {
@@ -17,19 +18,17 @@ class ProductPublicController extends Controller
      */
     public function index()
     {
-      $cart = Cart::where('user_id',Auth::user()->id)->first();
-      $items = $cart->cartItems;
       $products = Product::all();
-      return view('shop.index',compact('products','items'));
+      return view('shop.index',compact('products'));
     }
 
     public function item($id){
       $reviews = Review::where('product_id', $id)->get();
       $product = Product::findOrFail($id);
       $score = Review::score($id);
-      $cart = Cart::where('user_id',Auth::user()->id)->first();
-      $items = $cart->cartItems;
-      return view('shop.item', compact('items', 'product', 'reviews', 'score'));
+      // $cart = Cart::where('user_id',Auth::user()->id)->first();
+      // $items = $cart->cartItems;
+      return view('shop.item', compact( 'product', 'reviews', 'score'));
     }
 
     public function storeReview(Request $request){
@@ -39,7 +38,7 @@ class ProductPublicController extends Controller
       return redirect()->back();
     }
 
-    public function categories()
+    public function home()
     {
       $cart = Cart::where('user_id',Auth::user()->id)->first();
       $items = $cart->cartItems;

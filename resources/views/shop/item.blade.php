@@ -1,5 +1,5 @@
 @extends('layouts.shop')
-<!-- Page Content -->
+
 @section('styles')
   <link href="css/shop-homepage.css" rel="stylesheet">
   <link href="{{url("css/starrating.css")}}" rel="stylesheet">
@@ -87,14 +87,10 @@
             </div>
         </div>
 
-        <div class="col-md-9">
 
             <!-- Page Content -->
      <div class="container">
 
-         <div class="row">
-
-             <div class="col-md-9">
 
                  <div class="thumbnail">
                      <img class="img-responsive" src="{{url('images', $product->imageurl)}}" alt="">
@@ -163,7 +159,6 @@
 
              </div>
 
-         </div>
 
      </div>
      <!-- /.container -->

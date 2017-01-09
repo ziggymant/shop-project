@@ -1,7 +1,19 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+.sidebar {
+  margin-top: 0px;
+}
+
 #admin-page {
   padding-top: 0px;
+}
+
+#auth-container {
+  padding-top: 40px;
+}
+
+#shop-nav {
+  background-color: #232f3e;
 }
 
 .search-result ul li {

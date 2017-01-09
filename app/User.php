@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Cashier\Billable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -55,5 +56,12 @@ class User extends Authenticatable
     public function getGravatarAttribute(){
         $hash = md5(strtolower(trim($this->attributes['email'])));
         return 'http://www.gravatar.com/avatar/$hash';
+    }
+
+    public function cartItems(){
+      if($cart = Cart::where('user_id', $this->id)->first()){
+        return count($cart->cartItems);
+      }
+
     }
 }
