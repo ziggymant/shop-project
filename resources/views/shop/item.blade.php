@@ -6,93 +6,9 @@
 @endsection
 @section('content')
 
+<div class="row">
 
-<div id="shop-content" style="padding-top:30px;" class="container">
-
-    <div class="row">
-
-        <div class="col-sm-3 col-md-3">
-            <p class="lead">Shop Name</p>
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input id="search" type="text" class="form-control" placeholder="Search...">
-                                    <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                            <div  class="search-result list-group">
-                              <ul id="search-suggest">
-                                {{-- ajax input goes here --}}
-                              </ul>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-book fa-fw"></i> Books<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{route("users.index")}}">All books</a>
-                                </li>
-                                <li>
-                                    <a href="{{route("users.create")}}">Science</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-
-
-
-                        <li>
-                            <a href="#"><i class="fa fa-laptop fa-fw"></i> Computers<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{route("posts.index")}}">All Computers</a>
-                                </li>
-                                <li>
-                                    <a href="{{route("posts.create")}}">Dell</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-
-                        <li>
-                            <a href="#"><i class="fa fa-print fa-fw"></i> Office equipment<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{route("categories.index")}}">All Categories</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-
-                        <li>
-                            <a href="#"><i class="fa fa-shopping-cart fa-fw"></i>Other Products<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{url('admin/shop/products')}}">Bicycles</a>
-                                </li>
-
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-        </div>
-
-
-            <!-- Page Content -->
-     <div class="container">
-
-
-                 <div class="thumbnail">
+    <div class="thumbnail">
                      <img class="img-responsive" src="{{url('images', $product->imageurl)}}" alt="">
                      <div class="caption-full">
                          <h4 class="pull-right">${{$product->price}}</h4>
@@ -102,17 +18,17 @@
                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
                      </div>
                      <div class="ratings">
-                         <p class="pull-right">{{count($reviews)}} reviews</p>
+                         <p class="pull-right">{{count($product->reviews)}} reviews</p>
                            <p>
-                             @for ($i=0; $i < $score; $i++)
+                             @for ($i=0; $i < $product->score(); $i++)
                                <span class="glyphicon glyphicon-star"></span>
                              @endfor
-                               {{$score}}/5 stars
+                               {{$product->score()}}/5 stars
                            </p>
                      </div>
                  </div>
 
-                 <div class="well">
+    <div class="well">
 
                    <div class="well">
                        <h4>Leave a review:</h4>
@@ -134,8 +50,8 @@
 
                    </div>
                      <hr>
-                    @if($reviews)
-                      @foreach($reviews as $review)
+                    @if($product->reviews)
+                      @foreach($product->reviews as $review)
                      <div class="row">
                          <div class="col-md-12">
                              @for ($i=0; $i < $review->rating; $i++)
@@ -157,20 +73,7 @@
 
                  </div>
 
-             </div>
-
-
-     </div>
-     <!-- /.container -->
-
-            </div>
-
-        </div>
-
-    </div>
-
 </div>
-<!-- /.container -->
 
 @endsection
 

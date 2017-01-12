@@ -29,7 +29,7 @@
   <hr>
 
   <!-- Post Content -->
-  {{$post->body}}
+  {!!$post->body!!}
 
   <hr>
 
@@ -68,7 +68,9 @@
       <a class="pull-left" href="#">
           <img height="64" class="media-object" src="{{$comment->authorPhoto($comment->author)}}" alt="">
       </a>
+      @if(Auth::check())
       <button class="toggle-reply btn btn-primary pull-right">Reply</button>
+      @endif
       <div class="media-body">
           <h4 class="media-heading">{{$comment->author}}
               <small>{{$comment->created_at->diffForHumans()}}</small>

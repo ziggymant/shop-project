@@ -1,5 +1,13 @@
 @extends('layouts.admin')
 
+@section('styles')
+
+<script src="{{asset('/js/summernote.js')}}"></script>
+<link href="{{asset('css/summernote.css')}}" rel="stylesheet">
+
+@endsection
+
+
 @section('content')
 
 <h1>Create Post</h1>
@@ -23,7 +31,7 @@
   </div>
   <div class="form-group">
   {!!Form::label('body', 'Post')!!}
-  {!!Form::textarea('body', null, ['class'=>'form-control'])!!}
+  {!!Form::textarea('body', null, ['class'=>'form-control', 'id' => 'summernote'])!!}
   </div>
 
   <div class="form-group">
@@ -31,5 +39,18 @@
 </div>
 
 {!!Form::close()!!}
+
+@endsection
+
+@section('scripts')
+
+    <script type="text/javascript">
+    $('#summernote').summernote({
+      height: 300,                 // set editor height
+      minHeight: null,             // set minimum height of editor
+      maxHeight: null,             // set maximum height of editor
+      focus: true                  // set focus to editable area after initializing summernote
+    });
+    </script>
 
 @endsection

@@ -167,6 +167,7 @@ return [
         ConsoleTVs\Charts\ChartsServiceProvider::class,
         Laravel\Cashier\CashierServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -232,6 +233,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+
 
     ],
 

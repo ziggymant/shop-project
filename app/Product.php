@@ -24,7 +24,7 @@ class Product extends Model
       return $file;
     }
 
-    public function review(){
+    public function reviews(){
       return $this->hasMany('App\Review');
     }
 

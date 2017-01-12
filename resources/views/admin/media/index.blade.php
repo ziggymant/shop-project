@@ -25,7 +25,7 @@
     <tr>
       <td>{{$photo->id}}</td>
       <td><img height="50" src="{{$photo->path}}" alt=""></td>
-      <td>{{$photo->path}}</td>
+      <td>{{url($photo->path)}}</td>
       <td>{{$photo->created_at ? $photo->created_at : "No date"}}</td>
       <td>
         {!!Form::open(['method'=>'Delete', 'action'=>['AdminMediaConrtoller@destroy', $photo->id]])!!}

@@ -24,14 +24,6 @@ class AdminPostsController extends Controller
 
     }
 
-    public function post($slug){
-
-      $categories1 = Category::take(4)->get();
-      $categories2 = Category::skip(4)->take(4)->get();
-      $post = Post::whereSlug($slug)->get()->first();
-      $comments = $post->comments()->whereIsActive(1)->get();
-      return view('post', compact('post', 'comments','categories1', 'categories2'));
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -65,6 +57,8 @@ class AdminPostsController extends Controller
       $user->posts()->create($input);
       return redirect('/admin/posts');
     }
+
+
 
     /**
      * Display the specified resource.

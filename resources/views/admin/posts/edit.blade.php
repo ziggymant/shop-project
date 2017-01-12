@@ -1,5 +1,12 @@
 @extends('layouts.admin')
 
+@section('styles')
+
+<script src="{{asset('/js/summernote.js')}}"></script>
+<link href="{{asset('css/summernote.css')}}" rel="stylesheet">
+
+@endsection
+
 @section('content')
 
 <h1>Edit Post</h1>
@@ -23,7 +30,7 @@
   </div>
   <div class="form-group">
   {!!Form::label('body', 'Post')!!}
-  {!!Form::textarea('body', null, ['class'=>'form-control'])!!}
+  {!!Form::textarea('body', null, ['class'=>'form-control', 'id'=>'summernote'])!!}
   </div>
 
   <div class="form-group">
@@ -39,5 +46,17 @@
   </div>
 
 {!!Form::close()!!}
+
+@endsection
+
+@section('scripts')
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#summernote').summernote({
+              height:300,
+            });
+        });
+    </script>
 
 @endsection

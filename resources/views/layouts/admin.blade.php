@@ -15,6 +15,8 @@
 
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <script src="{{asset('js/libs.js')}}"></script>
+
     @yield('styles')
     @yield('head')
 
@@ -33,7 +35,7 @@
 <body>
 
     <!-- Navigation -->
-    @extends('layouts.navigation')
+    @include('layouts.navigation')
 
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
@@ -220,7 +222,7 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="{{asset('js/libs.js')}}"></script>
+{{-- <script src="{{asset('js/libs.js')}}"></script> --}}
 @yield('scripts')
 
 

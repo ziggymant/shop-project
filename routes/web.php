@@ -20,14 +20,15 @@
 
 Auth::routes();
 
-Route::get('/','ProductPublicController@index');
+Route::get('/{id?}','ProductPublicController@index');
 Route::get('/home', 'ProductPublicController@home');
 Route::get('/item/{id}','ProductPublicController@item');
-Route::get('/blog', 'PublicBlogController@index');
+Route::get('/blog/posts', 'PublicBlogController@index');
+Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'PublicBlogController@post']);
+Route::get('/category/{id}', 'ProductPublicController@category');
 
 
 
-Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
 
 Route::get('/search/{q}', 'Controller@search');
 Route::get('/productsearch/{q}', 'ProductPublicController@search');
@@ -35,9 +36,10 @@ Route::get('/productsearch/{q}', 'ProductPublicController@search');
 
 Route::group(['middleware'=>'admin'], function(){
 
-  Route::get('/admin', function(){
+  Route::get('/admin/index', function(){
   	return view('admin.index');
   });
+
   Route::resource('/admin/dashboard', 'Dashboard');
   Route::resource('/admin/users', 'AdminUsersController');
   Route::resource('/admin/posts', 'AdminPostsController');
@@ -54,6 +56,9 @@ Route::group(['middleware'=>'admin'], function(){
 });
 
 Route::group(['middleware'=>'auth'], function(){
+
+  Route::post('/comment/reply', 'CommentRepliesController@createReply');
+
   Route::get('/shop','ProductPublicController@home');
   Route::post('/review','ProductPublicController@StoreReview');
   Route::get('/shop/cart', 'CartController@showCart');
@@ -67,12 +72,5 @@ Route::group(['middleware'=>'auth'], function(){
   Route::get('order', 'OrderController@index');
   Route::get('download/{orderId}/{filename}', 'OrderController@download');
   Route::get('shop/orders','OrderController@allOrders' );
-
-});
-
-
-Route::group(['middleware'=>'auth'], function(){
-
-  Route::post('/comment/reply', 'CommentRepliesController@createReply');
 
 });

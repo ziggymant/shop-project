@@ -2,8 +2,11 @@
 
 @section('New Product', 'Page Title')
 
-@section('sidebar')
-    @parent
+@section('styles')
+
+<script src="{{asset('/js/summernote.js')}}"></script>
+<link href="{{asset('css/summernote.css')}}" rel="stylesheet">
+
 @endsection
 
 @section('content')
@@ -27,7 +30,7 @@
                     <div class="form-group">
                       {!!Form::label('description', 'Description', ['class'=>'col-md-3 control-label'])!!}
                         <div class="col-md-9">
-                          {!!Form::textarea('description', null, ['placeholder'=>'Description','id'=>'texarea', 'class'=>'form-control'])!!}
+                          {!!Form::textarea('description', null, ['placeholder'=>'Description','id'=>'texarea', 'class'=>'form-control', 'id'=>'summernote'])!!}
                         </div>
                     </div>
 
@@ -70,4 +73,17 @@
             {!!Form::close()!!}
         </div>
     </div>
+@endsection
+
+@section('scripts')
+
+    <script type="text/javascript">
+    $('#summernote').summernote({
+      height: 300,                 // set editor height
+      minHeight: null,             // set minimum height of editor
+      maxHeight: null,             // set maximum height of editor
+      focus: true                  // set focus to editable area after initializing summernote
+    });
+    </script>
+
 @endsection

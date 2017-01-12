@@ -17,10 +17,10 @@
                     <a href="#">About</a>
                 </li>
                 <li>
-                    <a href="{{url('/shop')}}">Store</a>
+                    <a href="#">Placehold</a>
                 </li>
                 <li>
-                    <a href="{{url('/blog')}}">Blog</a>
+                    <a href="{{url('blog/posts')}}">Blog</a>
                 </li>
               </ul>
 
@@ -53,7 +53,7 @@
                             </li>
                             @if (Auth::user()->isAdmin())
                               <li>
-                                  <a href="{{url('/admin')}}">Admin page</a>
+                                  <a href="{{url('/admin/index')}}">Admin page</a>
                               </li>
                             @endif
                         </ul>

@@ -16,19 +16,24 @@ class ProductPublicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($sort = "newest")
     {
-      $products = Product::all();
-      return view('shop.index',compact('products'));
+      // $products = Product::all();
+      if($sort == "price_asc") {$products = Product::orderBy('price', 'asc')->paginate(9);}
+      elseif($sort == "price_desc") {$products = Product::orderBy('price', 'desc')->paginate(9);}
+      elseif($sort == "newest") {$products = Product::orderBy('created_at', 'desc')->paginate(9);}
+      elseif($sort == "oldest") {$products = Product::orderBy('created_at', 'asc')->paginate(9);}
+      else {$products = Product::all();
+      }
+
+      // $products->paginate($id);
+      return view('index',compact('products'));
     }
 
     public function item($id){
-      $reviews = Review::where('product_id', $id)->get();
       $product = Product::findOrFail($id);
-      $score = Review::score($id);
-      // $cart = Cart::where('user_id',Auth::user()->id)->first();
-      // $items = $cart->cartItems;
-      return view('shop.item', compact( 'product', 'reviews', 'score'));
+
+      return view('shop.item', compact( 'product'));
     }
 
     public function storeReview(Request $request){
@@ -44,6 +49,11 @@ class ProductPublicController extends Controller
       $items = $cart->cartItems;
       $products = Product::all();
       return view('shop.categories',compact('products','items'));
+    }
+
+    public function category($id){
+      $products = Product::where('category_id', $id)->get();
+      return view('shop.category', compact('products'));
     }
 
     /**
