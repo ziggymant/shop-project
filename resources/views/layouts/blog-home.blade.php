@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Home - Start Bootstrap Template</title>
+    <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
 
@@ -42,7 +42,7 @@
             <div class="col-md-8">
 
                 <h1 class="page-header">
-                    Page Heading
+                    @yield('title')
                     <small>Secondary Text</small>
                 </h1>
 

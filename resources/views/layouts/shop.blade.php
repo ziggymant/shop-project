@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Home - Start Bootstrap Template</title>
+    <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
 
@@ -34,15 +34,16 @@
 
   <!-- Navigation -->
   @include('layouts.navigation')
-
-  <div class="container">
+  <div class="row">
+    <div id="page-title" class="">
+      <h1>@yield('title')</h1>
+    </div>
+  </div>
 
     <div id="shop-content" class="container">
 
-        <div class="row">
-            <div class="col-sm-3 col-md-3">
-                <p class="lead">Shop Name</p>
-                <div class="navbar-default sidebar" role="navigation">
+            <div class="col-md-3 navbar-default sidebar">
+
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
 
@@ -113,7 +114,7 @@
                         </ul>
                     </div>
                     <!-- /.sidebar-collapse -->
-                </div>
+
             </div>
 
             <div class="col-md-9">
@@ -123,17 +124,8 @@
 
             </div>
 
-        </div>
 
   </div>
-
-
-
-</div>
-
-
-
-
 
         <hr>
 

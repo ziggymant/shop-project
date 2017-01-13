@@ -30,7 +30,7 @@
                       </p>
                 </div>
                 <p>{{$product->description}}</p>
-                <a class="btn btn-primary" href="{{url('item', $product->id)}}">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary" href="{{url('item', $product->id)}}">View Product <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
         <hr>

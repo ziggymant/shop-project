@@ -1,5 +1,5 @@
 @extends('layouts.blog-home')
-
+@section('title', 'Blog | Home')
 @section('content')
 {{-- <div class="container">
     <div class="row">
@@ -24,11 +24,19 @@
     </p>
     <p><span class="glyphicon glyphicon-time"></span> Posted on {{$post->created_at}}</p>
     <hr>
-    <img height="300" class="img-responsive" src="{{$post->photo->path}}" alt="">
+    <img height="300" class="img-responsive" src="{{url($post->photo->path)}}" alt="">
     <hr>
-    <p>{{str_limit($post->body, 300)}}</p>
+    <p>{{strip_tags(str_limit($post->body, 300))}}</p>
     <a class="btn btn-primary" href="{{route('home.post', $post->slug)}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
     <hr>
+
+
     @endforeach
+
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-7">
+          {{$posts->render()}}
+      </div>
+    </div>
 @endsection

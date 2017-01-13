@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Charts;
+use App\User;
+use App\Post;
+use App\Order;
 
 class Dashboard extends Controller
 {
@@ -16,14 +19,35 @@ class Dashboard extends Controller
      */
     public function index()
     {
-      $chart =   Charts::create('donut', 'highcharts')
-      ->title('My nice chart')
+      $chart =   Charts::create('pie', 'highcharts')
+      ->title('Test chart')
       ->labels(['First', 'Second', 'Third'])
       ->values([5,10,20])
       ->dimensions(1000,500)
-      ->responsive(false);
+      ->responsive(true);
 
-        return view('admin.dashboard', ['chart' => $chart]);
+      $chart2 = Charts::database(User::all(), 'bar', 'highcharts')
+      ->title('New users')
+      ->elementLabel("Users")
+      ->dimensions(1000, 500)
+      ->responsive(true)
+      ->lastByMonth(6, true);
+
+      $chart3 = Charts::database(Post::all(), 'bar', 'highcharts')
+      ->title('New posts')
+      ->elementLabel("Posts")
+      ->dimensions(1000, 500)
+      ->responsive(true)
+      ->lastByMonth(6, true);
+
+      $chart4 = Charts::database(Order::all(), 'bar', 'highcharts')
+      ->title('Product purchases')
+      ->elementLabel("Purchases")
+      ->dimensions(1000, 500)
+      ->responsive(true)
+      ->lastByMonth(6, true);
+
+        return view('admin.index', compact('chart','chart2','chart3','chart4'));
     }
 
     /**
@@ -31,64 +55,5 @@ class Dashboard extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

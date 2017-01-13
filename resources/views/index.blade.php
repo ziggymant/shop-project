@@ -1,4 +1,6 @@
 @extends('layouts.shop')
+@section('title', 'Home page')
+
 <!-- Page Content -->
 @section('styles')
   <link href="css/shop-homepage.css" rel="stylesheet">
@@ -43,7 +45,7 @@
 <div class="row">
   <div class="col-md-12">
 
-      <div class="dropdown pull-right">
+      <div id="sort-btn" class="dropdown pull-right">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Sort by
         <span class="caret"></span>
@@ -65,8 +67,8 @@
                   <div class="col-sm-4 col-lg-4 col-md-4">
                     <a href="{{url('item', $product->id)}}">
                       <div class="thumbnail">
-                        <div class="">
-                          <img height="150" src="/images/{{$product->imageurl}}" alt="">
+                        <div id="thumbnail">
+                          <img class="img-responsive" src="/images/{{$product->imageurl}}" alt="">
                         </div>
 
                           <div class="caption">
@@ -103,7 +105,7 @@
   @endif
 
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-5">
+    <div class="col-sm-6 col-sm-offset-3">
         {{$products->render()}}
     </div>
   </div>

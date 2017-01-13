@@ -36,11 +36,8 @@ Route::get('/productsearch/{q}', 'ProductPublicController@search');
 
 Route::group(['middleware'=>'admin'], function(){
 
-  Route::get('/admin/index', function(){
-  	return view('admin.index');
-  });
 
-  Route::resource('/admin/dashboard', 'Dashboard');
+  Route::get('/admin/index', ['as'=>'admin.index','uses'=>'Dashboard@index']);
   Route::resource('/admin/users', 'AdminUsersController');
   Route::resource('/admin/posts', 'AdminPostsController');
   Route::resource('/admin/categories' ,'AdminCategoriesController');

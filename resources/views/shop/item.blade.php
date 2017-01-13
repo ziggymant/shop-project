@@ -1,8 +1,10 @@
 @extends('layouts.shop')
+@section('title', $product->name)
 
 @section('styles')
-  <link href="css/shop-homepage.css" rel="stylesheet">
   <link href="{{url("css/starrating.css")}}" rel="stylesheet">
+  <link href="css/shop-homepage.css" rel="stylesheet">
+
 @endsection
 @section('content')
 

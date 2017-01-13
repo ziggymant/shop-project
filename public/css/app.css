@@ -8,6 +8,10 @@
   padding-top: 0px;
 }
 
+#thumbnail {
+  height: 250px;
+}
+
 #auth-container {
   padding-top: 40px;
 }
@@ -16,8 +20,8 @@
   background-color: #232f3e;
 }
 
-#shop-content {
-  margin-top: 20px;
+#page-title {
+  padding-left: 150px;
 }
 
 .search-result ul li {
@@ -49,8 +53,8 @@
   margin-top: 40px;
 }
 
-.row {
-  margin-top: 40px;
+#sort-btn {
+  margin: 10px 10px;
 }
 
 #nested-comment {
@@ -63,12 +67,16 @@
 }
 
 #section7 {
-  padding: 40px 40px;
+  padding: 10px 10px;
   background-color: #5491bd;
 }
 
 #section7 i {
   color: #fff;
+}
+
+body {
+  padding-top: 70px;
 }
 
 /*!
