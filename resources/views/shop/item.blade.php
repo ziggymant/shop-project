@@ -10,14 +10,14 @@
 
 <div class="row">
 
-    <div class="thumbnail">
+    <div class="">
                      <img class="img-responsive" src="{{url('images', $product->imageurl)}}" alt="">
                      <div class="caption-full">
                          <h4 class="pull-right">${{$product->price}}</h4>
                          <h4><a href="#">{{$product->name}}</a>
                          </h4>
-                         <p>{{$product->description}}</p>
-                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                         <p>{!!$product->description!!}</p>
+                         
                      </div>
                      <div class="ratings">
                          <p class="pull-right">{{count($product->reviews)}} reviews</p>

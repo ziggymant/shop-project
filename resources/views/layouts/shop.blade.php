@@ -68,10 +68,10 @@
                                 <a href="#"><i class="fa fa-book fa-fw"></i> Books<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{url("category", 7)}}">All books</a>
+                                        <a href="{{url("category", 4)}}">All books</a>
                                     </li>
                                     <li>
-                                        <a href="{{url("category", 7)}}">Science</a>
+                                        <a href="{{url("category", 4)}}">Science</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -81,10 +81,10 @@
                                 <a href="#"><i class="fa fa-laptop fa-fw"></i> Computers<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{url("category", 8)}}">All Computers</a>
+                                        <a href="{{url("category", 1)}}">All Computers</a>
                                     </li>
                                     <li>
-                                        <a href="{{url("category", 8)}}">Dell</a>
+                                        <a href="{{url("category", 1)}}">Dell</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->

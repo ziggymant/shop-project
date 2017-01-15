@@ -1,0 +1,13 @@
+#thumbnail {
+ height:300px;
+}
+
+
+#thumbnail img{
+ width: auto;
+ height: auto;
+ max-width: 270;
+ max-height: 300px;
+ vertical-align: middle;
+ margin: auto;
+}

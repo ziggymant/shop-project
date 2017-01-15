@@ -6,6 +6,8 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\ActivationService;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -27,6 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
+    protected $activationService;
     protected $redirectTo = '/';
 
     /**
@@ -34,9 +37,11 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ActivationService $activationService)
     {
-        $this->middleware('guest');
+        // $this->middleware('guest');
+        $this->middleware('guest', ['except' => 'logout']);
+        $this->activationService = $activationService;
     }
 
     /**
@@ -68,4 +73,31 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $user = $this->create($request->all());
+
+        $this->activationService->sendActivationMail($user);
+
+        return redirect('/login')->with('status', 'We sent you an activation code. Check your email.');
+        }
+        public function authenticated(Request $request, $user)
+        {
+            if (!$user->activated) {
+               $this->activationService->sendActivationMail($user);
+               auth()->logout();
+               return back()->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+             }
+        return redirect()->intended($this->redirectPath());
+        }
+
 }

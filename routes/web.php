@@ -26,7 +26,9 @@ Route::get('/item/{id}','ProductPublicController@item');
 Route::get('/blog/posts', 'PublicBlogController@index');
 Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'PublicBlogController@post']);
 Route::get('/category/{id}', 'ProductPublicController@category');
+// Route::get('/user/activate', 'Controller@mail');
 
+Route::get('user/activation/{token}', 'Auth\LoginController@activateUser')->name('user.activate');
 
 
 

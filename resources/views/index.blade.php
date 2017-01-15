@@ -4,6 +4,7 @@
 <!-- Page Content -->
 @section('styles')
   <link href="css/shop-homepage.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 @endsection
 @section('content')
 
@@ -19,16 +20,16 @@
           <div class="carousel-inner">
               <div class="item active">
                   <h3><span>Adverts text placeholder 1</span></h3>
-                  <img class="slide-image" src="/photos/shop1-800x300.jpg" alt="">
+                  <img class="slide-image" src="{{url("photos/shop1-800x300.jpg")}}" alt="">
 
               </div>
               <div class="item">
                   <h3><span>Adverts text placeholder 2</span></h3>
-                  <img class="slide-image" src="/photos/shop2-800x300.jpg" alt="">
+                  <img class="slide-image" src="{{url("photos/shop2-800x300.jpg")}}" alt="">
               </div>
               <div class="item">
                   <h3><span>Adverts text placeholder 3</span></h3>
-                  <img class="slide-image" src="/photos/shop3-800x300.jpg" alt="">
+                  <img class="slide-image" src="{{url("photos/shop3-800x300.jpg")}}" alt="">
               </div>
           </div>
           <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -65,17 +66,19 @@
   @if($products)
     @foreach($products as $product)
                   <div class="col-sm-4 col-lg-4 col-md-4">
-                    <a href="{{url('item', $product->id)}}">
+                    
                       <div class="thumbnail">
-                        <div id="thumbnail">
-                          <img class="img-responsive" src="/images/{{$product->imageurl}}" alt="">
-                        </div>
+                        <a href="{{url('item', $product->id)}}">
+                         <div id="thumbnail" >
+                          <img class="rounded img-responsive" src="{{url("images",$product->imageurl)}}" alt="">
+                         </div>
 
                           <div class="caption">
                               <h4 class="pull-right">${{$product->price}}</h4>
+                              <br>
                               <h4><a href="#">{{$product->name}}</a>
                               </h4>
-                              <p>{{$product->description}}</p>
+                              <p>{{strip_tags(str_limit($product->description, 150))}}</p>
                           </div>
                           <div class="ratings">
                             @if($product->score() > 0)

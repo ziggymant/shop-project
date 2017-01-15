@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Cashier\Billable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class User extends Authenticatable
 {
@@ -47,6 +48,14 @@ class User extends Authenticatable
         return true;
       }
       return false;
+    }
+
+    public function mail_confirm($name, $email) {
+      $data = ['name'=>$name, 'email'=>$email];
+      Mail::send('emails.test', $data, function($message){
+
+        $message->to($email, $name)->subject('Hello Ziggy');
+      });
     }
 
     public function posts() {

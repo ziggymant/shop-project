@@ -3,6 +3,7 @@
 @section('styles')
   <link href="css/shop-homepage.css" rel="stylesheet">
   <link href="{{url("css/starrating.css")}}" rel="stylesheet">
+  <link href="{{url("css/styles.css")}}" rel="stylesheet">
 @endsection
 @section('content')
         <!-- Project One -->
@@ -12,7 +13,9 @@
         <div class="row">
             <div class="col-md-7">
                 <a href="#">
+                   <div id="thumbnail">
                     <img height="170" class="img-responsive" src="{{url('images', $product->imageurl)}}" alt="">
+                   </div>
                 </a>
             </div>
             <div class="col-md-5">
@@ -29,7 +32,7 @@
                           {{$product->score()}}/5 stars
                       </p>
                 </div>
-                <p>{{$product->description}}</p>
+                <p>{{strip_tags(str_limit($product->description, 500))}}</p>
                 <a class="btn btn-primary" href="{{url('item', $product->id)}}">View Product <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
