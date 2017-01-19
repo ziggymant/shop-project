@@ -4,7 +4,7 @@
 <!-- Page Content -->
 @section('styles')
   <link href="css/shop-homepage.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+  {{-- <link href="css/styles.css" rel="stylesheet"> --}}
 @endsection
 @section('content')
 
@@ -66,7 +66,7 @@
   @if($products)
     @foreach($products as $product)
                   <div class="col-sm-4 col-lg-4 col-md-4">
-                    
+
                       <div class="thumbnail">
                         <a href="{{url('item', $product->id)}}">
                          <div id="thumbnail" >

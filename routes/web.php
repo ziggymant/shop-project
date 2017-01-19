@@ -57,6 +57,8 @@ Route::group(['middleware'=>'admin'], function(){
 Route::group(['middleware'=>'auth'], function(){
 
   Route::post('/comment/reply', 'CommentRepliesController@createReply');
+  Route::get('/profile/{id}', 'PublicUserController@show');
+  Route::patch('/profile/update/{user}', 'PublicUserController@update');
 
   Route::get('/shop','ProductPublicController@home');
   Route::post('/review','ProductPublicController@StoreReview');

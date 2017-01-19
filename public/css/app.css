@@ -1,5 +1,9 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+body {
+  width: 100%;
+}
+
 .sidebar {
   margin-top: 0px;
 }
@@ -18,6 +22,10 @@
 
 #shop-nav {
   background-color: #232f3e;
+}
+
+footer {
+  margin-bottom: 0px;
 }
 
 #page-title {

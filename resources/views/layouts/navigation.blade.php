@@ -11,8 +11,8 @@
             <a class="navbar-brand" href="{{url('/')}}">Home</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
+        <div id="nav-links" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul  class="nav navbar-nav">
                 <li>
                     <a href="#">About</a>
                 </li>
@@ -54,6 +54,11 @@
                             @if (Auth::user()->isAdmin())
                               <li>
                                   <a href="{{url('/admin/index')}}">Admin page</a>
+                              </li>
+                            @endif
+                            @if (Auth::user())
+                              <li>
+                                  <a href="{{url('profile', Auth::id())}}">User profile</a>
                               </li>
                             @endif
                         </ul>
